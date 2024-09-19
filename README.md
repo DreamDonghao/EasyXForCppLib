@@ -22,17 +22,17 @@ EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮�
 
 ## 使用
 
-1. 下载releases中的.h头文件和.lib静态库文件
+1. 下载releases中的.h头文件和.lib静态库文件。
 
-2. 将下载的两个文件放入项目文件中
+2. 将下载的两个文件放入项目文件中。
 
-3. 在项目中包含头文件与静态库文件
+3. 在项目中包含头文件与静态库文件。
 
 ```cpp
 #include"easyxforcpp.h"
 #pragma comment(lib,"EasyXForCppLib.lib")
 ```
-   **注意!!!:至少需要 "/std:c++17"**
+   **注意!!!:至少需要 "/std:c++17"**。
 
 
 ### Window 类
