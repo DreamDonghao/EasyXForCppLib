@@ -4,8 +4,8 @@ EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮�
 
 ## 目录
 
-- 安装
 - 使用
+- 文档
   - Window 类
   - Screen 类
   - Image 类
@@ -20,27 +20,20 @@ EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮�
 - 贡献
 - 许可证
 
-## 安装
-
-1. 克隆仓库到本地：
-
-   ```sh
-   git clone https://github.com/yourusername/efc-ui-library.git
-   ```
-
-2. 进入项目目录：
-
-   ```sh
-   cd efc-ui-library
-   ```
-
-3. 编译项目：
-
-   ```sh
-   make
-   ```
-
 ## 使用
+
+1. 下载releases中的.h头文件和.lib静态库文件
+
+2. 将下载的两个文件放入项目文件中
+
+3. 在项目中包含头文件与静态库文件
+
+```cpp
+#include"easyxforcpp.h"
+#pragma comment(lib,"EasyXForCppLib.lib")
+```
+   **注意!!!:至少需要 "/std:c++17"**
+
 
 ### Window 类
 
@@ -298,12 +291,8 @@ efc::Timer timer;
 以下是一个完整的示例代码，展示如何使用EFC UI Library创建一个简单的图形界面：
 
 ```cpp
-#include "Window.h"
-#include "Button.h"
-#include "ImageIcon.h"
-#include "ProgressBar.h"
-#include "Rectangle.h"
-#include "Message.h"
+#include"easyxforcpp.h"
+#pragma comment(lib,"EasyXForCppLib.lib")
 
 int main() {
     efc::Window window(800, 600, 255, 255, 255);
