@@ -6,16 +6,16 @@ EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮�
 
 - 安装
 - 使用
-  - Button 类
+  - Window 类
+  - Screen 类
   - Image 类
   - ImageIcon 类
-  - InteractiveRegion 类
-  - Message 类
-  - ProgressBar 类
   - Rectangle 类
-  - Screen 类
+  - ProgressBar 类
+  - Message 类
+  - InteractiveRegion 类
+  - Button 类
   - Timer 类
-  - Window 类
 - 示例代码
 - 贡献
 - 许可证
@@ -191,22 +191,7 @@ efc::ProgressBar progressBar(300, 300, 200, 30, 0, 255, 0, 100, 50);
 - `double getNowVal() const`: 获取当前值。
 - `double getNowWidth() const`: 获取当前宽度。
 
-### InteractiveRegion 类
-
-可交互区域类，用于检测鼠标点击事件。
-
-#### 声明
-
-```cpp
-efc::InteractiveRegion region(50, 50, 100, 50, message);
-```
-
-
-
-#### 方法
-
-- `InteractiveRegion(const int _x, const int _y, const int _width, const int _height, Message& message)`: 构造函数，初始化区域位置、大小和消息对象引用。
-- `const bool isLeftMouseButtonClick()`: 判断左键是否在区域内点击。
+- 
 
 ### Message 类
 
@@ -254,6 +239,23 @@ efc::Message message;
 - `const bool isSpaceKeyDown() const`: 判断空格是否按下。
 - `const int getMouseX() const`: 获取鼠标X坐标。
 - `const int getMouseY() const`: 获取鼠标Y坐标。
+
+### InteractiveRegion 类
+
+可交互区域类，用于检测鼠标点击事件。
+
+#### 声明
+
+```cpp
+efc::InteractiveRegion region(50, 50, 100, 50, message);
+```
+
+
+
+#### 方法
+
+- `InteractiveRegion(const int _x, const int _y, const int _width, const int _height, Message& message)`: 构造函数，初始化区域位置、大小和消息对象引用。
+- `const bool isLeftMouseButtonClick()`: 判断左键是否在区域内点击。
 
 ### Button 类
 
