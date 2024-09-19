@@ -1,7 +1,5 @@
 # EasyXForCppLib
 
-# EFC UI Library
-
 EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮、图像、进度条、矩形等UI元素。
 
 ## 目录
@@ -44,21 +42,45 @@ EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮�
 
 ## 使用
 
-### Button 类
+### Window 类
 
-按钮类用于创建和管理按钮。
+窗口类用于创建和管理窗口。
 
 #### 声明
 
 ```cpp
-efc::Button button(message, L"button.png", 50, 50, 100, 50);
+efc::Window window(800, 600, 255, 255, 255);
+```
+
+
+
+#### 方法
+
+- `Window(unsigned _width, unsigned _height, const int r, const int g, const int b)`: 构造函数，初始化窗口的宽度、高度和背景颜色。
+- `void setBackgroundColor(const int r, const int g, const int b)`: 设置背景颜色，使用RGB值。
+- `const unsigned getWidth() const`: 获取窗口的宽度。
+- `const unsigned getHeight() const`: 获取窗口的高度。
+- `void flushBuffer()`: 刷新缓冲区，更新窗口显示内容。
+- `void clear()`: 清空窗口。
+- `template<typename... Args> void drawToBuffer(Args... args)`: 将对象加载绘制到缓冲区。
+
+### Screen 类
+
+屏幕类用于管理和更新屏幕上的所有UI元素。
+
+#### 声明
+
+```cpp
+efc::Screen screen(window, message);
 ```
 
 #### 方法
 
-- `Button(Message& message, const std::wstring& imagePath, const int x, const int y, const unsigned width, const unsigned height)`: 构造函数，初始化按钮图像和交互区域。
-- `const ImageIcon& getImageIcon() const`: 获取按钮的图像资源。
-- `const bool isLeftClick()`: 检查是否左键点击。
+- `Screen(Window& _window, Message& _message)`: 构造函数，初始化窗口和消息对象。
+- `void upDate()`: 更新屏幕，绘制所有元素。
+- `template<typename... Args> void AddElement(Args... args)`: 添加各种UI元素。
+
+- 
 
 ### Image 类
 
@@ -107,6 +129,67 @@ efc::ImageIcon imageIcon(L"icon.png", 200, 200, 100, 100);
 - `void setHeight(unsigned _height)`: 设置高度。
 - `void setX(int _x)`: 设置X坐标。
 - `void setY(int _y)`: 设置Y坐标。
+
+- 
+
+### Rectangle 类
+
+矩形类，用于绘制矩形。
+
+#### 声明
+
+```cpp
+efc::Rectangle rectangle(400, 400, 150, 100, 255, 0, 0, 0, 0, 0);
+```
+
+
+
+#### 方法
+
+- `Rectangle(int x, int y, unsigned width, unsigned height, int fillColorR, int fillColorG, int fillColorB, int borderColorR, int borderColorG, int borderColorB)`: 构造函数，初始化矩形的位置、尺寸、填充颜色和边框颜色。
+- `int getX() const`: 获取X坐标。
+- `int getY() const`: 获取Y坐标。
+- `unsigned getWidth() const`: 获取宽度。
+- `unsigned getHeight() const`: 获取高度。
+- `void setX(int _x)`: 设置X坐标。
+- `void setY(int _y)`: 设置Y坐标。
+- `void setWidth(unsigned _width)`: 设置宽度。
+- `void setHeight(unsigned _height)`: 设置高度。
+- `int getFillColorR() const`: 获取填充颜色的红色分量。
+- `int getFillColorG() const`: 获取填充颜色的绿色分量。
+- `int getFillColorB() const`: 获取填充颜色的蓝色分量。
+- `int getBorderColorR() const`: 获取边框颜色的红色分量。
+- `int getBorderColorG() const`: 获取边框颜色的绿色分量。
+- `int getBorderColorB() const`: 获取边框颜色的蓝色分量。
+- `void setFillColor(int r, int g, int b)`: 设置填充颜色。
+- `void setBorderColor(int r, int g, int b)`: 设置边框颜色。
+
+### ProgressBar 类
+
+进度条类，用于显示进度。
+
+#### 声明
+
+```cpp
+efc::ProgressBar progressBar(300, 300, 200, 30, 0, 255, 0, 100, 50);
+```
+
+
+
+#### 方法
+
+- `ProgressBar(const int _x, const int _y, const int _width, const int _height, const int r, const int g, const int b, const double _maxVal, const double _nowVal)`: 构造函数，初始化进度条位置、尺寸、颜色和进度值。
+- `void upDateNowVal(const double _nowVal)`: 更新当前值。
+- `int getX() const`: 获取X坐标。
+- `int getY() const`: 获取Y坐标。
+- `unsigned int getWidth() const`: 获取宽度。
+- `unsigned int getHeigth() const`: 获取高度。
+- `int getR() const`: 获取颜色分量R。
+- `int getG() const`: 获取颜色分量G。
+- `int getB() const`: 获取颜色分量B。
+- `double getMaxVal() const`: 获取最大值。
+- `double getNowVal() const`: 获取当前值。
+- `double getNowWidth() const`: 获取当前宽度。
 
 ### InteractiveRegion 类
 
@@ -172,80 +255,21 @@ efc::Message message;
 - `const int getMouseX() const`: 获取鼠标X坐标。
 - `const int getMouseY() const`: 获取鼠标Y坐标。
 
-### ProgressBar 类
+### Button 类
 
-进度条类，用于显示进度。
-
-#### 声明
-
-```cpp
-efc::ProgressBar progressBar(300, 300, 200, 30, 0, 255, 0, 100, 50);
-```
-
-
-
-#### 方法
-
-- `ProgressBar(const int _x, const int _y, const int _width, const int _height, const int r, const int g, const int b, const double _maxVal, const double _nowVal)`: 构造函数，初始化进度条位置、尺寸、颜色和进度值。
-- `void upDateNowVal(const double _nowVal)`: 更新当前值。
-- `int getX() const`: 获取X坐标。
-- `int getY() const`: 获取Y坐标。
-- `unsigned int getWidth() const`: 获取宽度。
-- `unsigned int getHeigth() const`: 获取高度。
-- `int getR() const`: 获取颜色分量R。
-- `int getG() const`: 获取颜色分量G。
-- `int getB() const`: 获取颜色分量B。
-- `double getMaxVal() const`: 获取最大值。
-- `double getNowVal() const`: 获取当前值。
-- `double getNowWidth() const`: 获取当前宽度。
-
-### Rectangle 类
-
-矩形类，用于绘制矩形。
+按钮类用于创建和管理按钮。
 
 #### 声明
 
 ```cpp
-efc::Rectangle rectangle(400, 400, 150, 100, 255, 0, 0, 0, 0, 0);
-```
-
-
-
-#### 方法
-
-- `Rectangle(int x, int y, unsigned width, unsigned height, int fillColorR, int fillColorG, int fillColorB, int borderColorR, int borderColorG, int borderColorB)`: 构造函数，初始化矩形的位置、尺寸、填充颜色和边框颜色。
-- `int getX() const`: 获取X坐标。
-- `int getY() const`: 获取Y坐标。
-- `unsigned getWidth() const`: 获取宽度。
-- `unsigned getHeight() const`: 获取高度。
-- `void setX(int _x)`: 设置X坐标。
-- `void setY(int _y)`: 设置Y坐标。
-- `void setWidth(unsigned _width)`: 设置宽度。
-- `void setHeight(unsigned _height)`: 设置高度。
-- `int getFillColorR() const`: 获取填充颜色的红色分量。
-- `int getFillColorG() const`: 获取填充颜色的绿色分量。
-- `int getFillColorB() const`: 获取填充颜色的蓝色分量。
-- `int getBorderColorR() const`: 获取边框颜色的红色分量。
-- `int getBorderColorG() const`: 获取边框颜色的绿色分量。
-- `int getBorderColorB() const`: 获取边框颜色的蓝色分量。
-- `void setFillColor(int r, int g, int b)`: 设置填充颜色。
-- `void setBorderColor(int r, int g, int b)`: 设置边框颜色。
-
-### Screen 类
-
-屏幕类用于管理和更新屏幕上的所有UI元素。
-
-#### 声明
-
-```cpp
-efc::Screen screen(window, message);
+efc::Button button(message, L"button.png", 50, 50, 100, 50);
 ```
 
 #### 方法
 
-- `Screen(Window& _window, Message& _message)`: 构造函数，初始化窗口和消息对象。
-- `void upDate()`: 更新屏幕，绘制所有元素。
-- `template<typename... Args> void AddElement(Args... args)`: 添加各种UI元素。
+- `Button(Message& message, const std::wstring& imagePath, const int x, const int y, const unsigned width, const unsigned height)`: 构造函数，初始化按钮图像和交互区域。
+- `const ImageIcon& getImageIcon() const`: 获取按钮的图像资源。
+- `const bool isLeftClick()`: 检查是否左键点击。
 
 ### Timer 类
 
@@ -266,28 +290,6 @@ efc::Timer timer;
 - `void reset()`: 重置计时器，将开始时间点设置为当前时间。
 - `long long elapsedMilliseconds() const`: 获取从开始时间点到当前时间点的经过时间（以毫秒为单位）。
 - `long long elapsedSeconds() const`: 获取从开始时间点到当前时间点的经过时间（以秒为单位）。
-
-### Window 类
-
-窗口类用于创建和管理窗口。
-
-#### 声明
-
-```cpp
-efc::Window window(800, 600, 255, 255, 255);
-```
-
-
-
-#### 方法
-
-- `Window(unsigned _width, unsigned _height, const int r, const int g, const int b)`: 构造函数，初始化窗口的宽度、高度和背景颜色。
-- `void setBackgroundColor(const int r, const int g, const int b)`: 设置背景颜色，使用RGB值。
-- `const unsigned getWidth() const`: 获取窗口的宽度。
-- `const unsigned getHeight() const`: 获取窗口的高度。
-- `void flushBuffer()`: 刷新缓冲区，更新窗口显示内容。
-- `void clear()`: 清空窗口。
-- `template<typename... Args> void drawToBuffer(Args... args)`: 将对象加载绘制到缓冲区。
 
 ## 示例代码
 
