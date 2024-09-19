@@ -30,7 +30,7 @@ EFC UI Library 是一个用于创建图形用户界面的C++库，包含按钮�
 
 ```cpp
 #include"easyxforcpp.h"
-#pragma comment(lib,"EasyXForCppLib.lib")
+#pragma comment(lib,"easyxforcpp.lib")
 ```
    **注意!!!:至少需要 "/std:c++17"**。
 
