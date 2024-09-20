@@ -2,28 +2,21 @@
 #include <iostream>
 int main() {
 	efc::Message message;
-	efc::Window window(800, 600,225,225,225);// 窗口
+	efc::Window window(1200, 800,249,249,247);// 窗口
 
-	efc::Rectangle r(0, 0, 100, 100, 100, 100, 100); //矩形
-	efc::ImageIcon i(L"C:\\Users\\Donghao\\Pictures\\a\\m.png", 100, 100, 100, 100);// 图片
-	efc::Button b(message, L"C:\\Users\\Donghao\\Pictures\\a\\m.png", 300, 300, 300, 300);//按钮
-	efc::ProgressBar p(0, 0, 800, 100, 200, 50, 50, 100, 0);
-	efc::Button startGame(message, L" ", 400, 100, 400, 150);
-	efc::Button settings(message, L"", 400, 300, 400, 150);
-	efc::Button exit(message, L"", 400, 500, 400, 150);
-	efc::Screen screen(window,message);     
-	screen.AddElement(&startGame,&exit,&settings);
-	screen.AddElement(&startGame, &exit, &settings);
+	efc::Screen s1(window, message);
+	efc::Rectangle r1(30, 10, 100, 780, 243, 236, 237, 243, 236, 237,25,25);
+	efc::Rectangle r2(160, 400, 400, 150, 241, 200, 196, 241, 200, 196,25,25);
+	efc::Rectangle r3(160, 570, 400, 150, 247, 225, 189, 247, 225, 189, 25, 25);
+	efc::Rectangle r4(580, 400, 400, 150, 213,211,188, 213, 211, 188, 25, 25);
+	efc::Rectangle r5(580, 570, 400, 150, 196, 237, 218, 196, 237, 218, 25, 25);
+	s1.AddElement(&r1, &r2, &r3, &r4, &r5);
+	while (true) {
+		s1.upDate();
+	}
 
 	
-	efc::Timer timer;
-	timer.reset();
-	for (int i = 0; i <= 100; ++i) {
-		p.upDateNowVal(i);
-		screen.upDate();
-	}
-	std::cout << timer.elapsedMilliseconds();
-	std::cout << "结束";
+	
 	Sleep(100000);
 	return 0;
 }

@@ -132,18 +132,20 @@ efc::ImageIcon imageIcon(L"icon.png", 200, 200, 100, 100);
 #### 声明
 
 ```cpp
-efc::Rectangle rectangle(400, 400, 150, 100, 255, 0, 0, 0, 0, 0);
+efc::Rectangle rectangle(400, 400, 150, 100, 255, 0, 0, 0, 0, 0，50，50);
 ```
 
 
 
 #### 方法
 
-- `Rectangle(int x, int y, unsigned width, unsigned height, int fillColorR, int fillColorG, int fillColorB, int borderColorR, int borderColorG, int borderColorB)`: 构造函数，初始化矩形的位置、尺寸、填充颜色和边框颜色。
+- `Rectangle(int x, int y, unsigned width, unsigned height, int fillColorR, int fillColorG, int fillColorB, int borderColorR, int borderColorG, int borderColorB，int ellipsewidth = 0, int ellipseheight = 0)`: 构造函数，初始化矩形的位置、尺寸、填充颜色和边框颜色，以及圆角。
 - `int getX() const`: 获取X坐标。
 - `int getY() const`: 获取Y坐标。
 - `unsigned getWidth() const`: 获取宽度。
 - `unsigned getHeight() const`: 获取高度。
+- int getEllipsewidth() const：获取构成圆角矩形的圆角的椭圆的宽度。
+- int getEllipseheight() const：或如构成圆角矩形的圆角的椭圆的高度。
 - `void setX(int _x)`: 设置X坐标。
 - `void setY(int _y)`: 设置Y坐标。
 - `void setWidth(unsigned _width)`: 设置宽度。
@@ -301,7 +303,7 @@ int main() {
     efc::Button button(message, L"button.png", 50, 50, 100, 50);
     efc::ImageIcon imageIcon(L"icon.png", 200, 200, 100, 100);
     efc::ProgressBar progressBar(300, 300, 200, 30, 0, 255, 0, 100, 50);
-    efc::Rectangle rectangle(400, 400, 150, 100, 255, 0, 0, 0, 0, 0);
+    efc::Rectangle rectangle(400, 400, 150, 100, 255, 0, 0, 0, 0, 0，50，50);
 
     window.drawToBuffer(button, imageIcon, progressBar, rectangle);
     window.flushBuffer();

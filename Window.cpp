@@ -25,8 +25,9 @@ namespace efc {
     void Window::drawObjectToBuffer(const Rectangle& rectangle) {
         setfillcolor(RGB(rectangle.getFillColorR(), rectangle.getFillColorG(), rectangle.getFillColorB()));
         setlinecolor(RGB(rectangle.getBorderColorR(), rectangle.getBorderColorG(), rectangle.getBorderColorB()));
-        solidrectangle(rectangle.getX(), rectangle.getY(),
-            rectangle.getX() + rectangle.getWidth(), rectangle.getY() + rectangle.getHeight());
+        fillroundrect(rectangle.getX(), rectangle.getY(),
+            rectangle.getX() + rectangle.getWidth(), rectangle.getY() + rectangle.getHeight(),
+            rectangle.getEllipsewidth(),rectangle.getEllipseheight());
     }
 
     void Window::drawObjectToBuffer(ProgressBar& p) {
